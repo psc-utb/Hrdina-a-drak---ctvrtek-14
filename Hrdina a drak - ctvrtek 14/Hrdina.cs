@@ -14,6 +14,8 @@ namespace Hrdina_a_drak___ctvrtek_14
         public double PoskozeniMax { get; set; }
         public double ZbrojMax { get; set; }
 
+        public bool Utekl { get; set; }
+
         public Hrdina(string jmeno, double zdravi, double zdraviMax, double poskozeniMax, double zbrojMax)
         {
             Jmeno = jmeno;
@@ -21,18 +23,24 @@ namespace Hrdina_a_drak___ctvrtek_14
             ZdraviMax = zdraviMax;
             PoskozeniMax = poskozeniMax;
             ZbrojMax = zbrojMax;
+            Utekl = false;
         }
 
         public double Utok(Drak oponent)
         {
-            double hodnotaUtoku = 0;
+            if (MuzeBojovat())
+            {
+                double hodnotaUtoku = 0;
 
-            Random rnd = new Random();
-            hodnotaUtoku = rnd.NextDouble() * PoskozeniMax;
-            hodnotaUtoku -= oponent.Obrana();
-            oponent.SnizeniZdravi(hodnotaUtoku);
+                Random rnd = new Random();
+                hodnotaUtoku = rnd.NextDouble() * PoskozeniMax;
+                hodnotaUtoku -= oponent.Obrana();
+                oponent.SnizeniZdravi(hodnotaUtoku);
 
-            return hodnotaUtoku;
+                return hodnotaUtoku;
+            }
+            else
+                throw new Exception("Hrdina zaútočil, i když nemůže bojovat!");
         }
 
         public double Obrana()
@@ -50,6 +58,11 @@ namespace Hrdina_a_drak___ctvrtek_14
             {
                 Zdravi -= hodnotaSnizeni;
             }
+        }
+
+        public bool MuzeBojovat()
+        {
+            return JeZivy() && Utekl == false;
         }
 
         public bool JeZivy()

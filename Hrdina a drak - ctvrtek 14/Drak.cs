@@ -14,6 +14,8 @@ namespace Hrdina_a_drak___ctvrtek_14
         public double PoskozeniMax { get; set; }
         public double ZbrojMax { get; set; }
 
+        public bool Utekl { get; set; }
+
 
         public Drak(string jmeno, double zdravi, double zdraviMax, double poskozeniMax, double zbrojMax)
         {
@@ -22,18 +24,30 @@ namespace Hrdina_a_drak___ctvrtek_14
             ZdraviMax = zdraviMax;
             PoskozeniMax = poskozeniMax;
             ZbrojMax = zbrojMax;
+            Utekl = false;
         }
 
+        /// <summary>
+        /// drak zaútočí na hrdinu vygenerovanou hodnotou. Hrdina se brání a případně se mu sníží životy.
+        /// </summary>
+        /// <param name="oponent">oponent draka - hrdina</param>
+        /// <returns>hodnota utoku</returns>
+        /// <exception cref="Exception">drak zaútočí, i když už útočit nemůže</exception>
         public double Utok(Hrdina oponent)
         {
-            double hodnotaUtoku = 0;
+            if (MuzeBojovat())
+            {
+                double hodnotaUtoku = 0;
 
-            Random rnd = new Random();
-            hodnotaUtoku = rnd.NextDouble() * PoskozeniMax;
-            hodnotaUtoku -= oponent.Obrana();
-            oponent.SnizeniZdravi(hodnotaUtoku);
+                Random rnd = new Random();
+                hodnotaUtoku = rnd.NextDouble() * PoskozeniMax;
+                hodnotaUtoku -= oponent.Obrana();
+                oponent.SnizeniZdravi(hodnotaUtoku);
 
-            return hodnotaUtoku;
+                return hodnotaUtoku;
+            }
+            else
+                throw new Exception("Drak zaútočil, i když nemůže bojovat!");
         }
 
         public double Obrana()
@@ -53,6 +67,10 @@ namespace Hrdina_a_drak___ctvrtek_14
             }
         }
 
+        public bool MuzeBojovat()
+        {
+            return JeZivy() && Utekl == false;
+        }
 
         public bool JeZivy()
         {
