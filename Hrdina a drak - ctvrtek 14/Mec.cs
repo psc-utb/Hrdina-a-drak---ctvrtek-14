@@ -14,5 +14,11 @@ namespace Hrdina_a_drak___ctvrtek_14
         {
             PoskozeniMax = poskozeniMax;
         }
+
+        public Mec Clone()
+        {
+            //return new Mec(PoskozeniMax);
+            return this.MemberwiseClone() as Mec;
+        }
     }
 }

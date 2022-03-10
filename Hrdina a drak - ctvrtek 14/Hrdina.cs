@@ -15,5 +15,19 @@ namespace Hrdina_a_drak___ctvrtek_14
             Mec = mec;
         }
 
+        public Hrdina Clone()
+        {
+            //Hrdina klon = new Hrdina(Jmeno, Zdravi, ZdraviMax, PoskozeniMax, ZbrojMax, Mec.Clone());
+            //klon.Utekl = Utekl;
+            Hrdina klon = this.MemberwiseClone() as Hrdina;
+            klon.Mec = Mec.Clone();
+            return klon;
+        }
+
+        public override string ToString()
+        {
+            return $"{Jmeno}, Zdravi: {Zdravi}, ZdraviMax: {ZdraviMax}, PoskozeniMax: {PoskozeniMax}, ZbrojMax: {ZbrojMax}, Utekl: {Utekl}, Mec-PoskozeniMax: {Mec.PoskozeniMax}";
+        }
+
     }
 }
