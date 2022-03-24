@@ -39,8 +39,12 @@ namespace Hrdina_a_drak___ctvrtek_14
 
         public override string ToString()
         {
-            return $"{Jmeno}, Zdravi: {Zdravi}, ZdraviMax: {ZdraviMax}, PoskozeniMax: {PoskozeniMax}, ZbrojMax: {ZbrojMax}, Utekl: {Utekl}, Mec-PoskozeniMax: {Mec.PoskozeniMax}";
+            return $"{Jmeno}, Zdravi: {Zdravi}, ZdraviMax: {ZdraviMax}, PoskozeniMax: {PoskozeniMax}, ZbrojMax: {ZbrojMax}, Utekl: {Utekl}, Mec-PoskozeniMax: {Mec.PoskozeniMax}, Hodnoceni postavy: {HodnoceniPostavy()}";
         }
 
+        protected override bool KontrolaOponenta(Postava oponent)
+        {
+            return true;
+        }
     }
 }

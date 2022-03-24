@@ -49,7 +49,7 @@ namespace Hrdina_a_drak___ctvrtek_14
             int pocet = 0;
             foreach (var postava in Postavy)
             {
-                if (postava.MuzeBojovat())
+                if (postava.MuzeBojovat() && postava.MuzeVybratOponenta(Postavy))
                 {
                     ++pocet;
                 }
@@ -62,7 +62,7 @@ namespace Hrdina_a_drak___ctvrtek_14
         {
             int pocetBojujicichPostav = PocetBojujicichPostav();
 
-            if (pocetBojujicichPostav > 1)
+            if (pocetBojujicichPostav > 0)
             {
                 return true;
             }

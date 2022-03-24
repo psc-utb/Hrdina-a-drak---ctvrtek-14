@@ -13,5 +13,9 @@ namespace Hrdina_a_drak___ctvrtek_14
         {
         }
 
+        protected override bool KontrolaOponenta(Postava oponent)
+        {
+            return oponent is not Drak;
+        }
     }
 }
