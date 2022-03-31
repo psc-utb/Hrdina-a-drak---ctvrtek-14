@@ -17,6 +17,7 @@ namespace Hrdina_a_drak___ctvrtek_14
 
         public void Boj()
         {
+            Bedna bedna = new Bedna(50, 2);
             while (MuzeSeBojovat())
             {
                 for (int i = 0; i < Postavy.Length; ++i)
@@ -27,7 +28,19 @@ namespace Hrdina_a_drak___ctvrtek_14
                         Postava oponent = utocnik.VyberOponenta(Postavy);
                         if (oponent != null)
                         {
-                            double utok = utocnik.Utok(oponent);
+                            double utok;
+                            if (bedna.NeniRozbita())
+                            {
+                                utok = utocnik.Utok(bedna);
+                                Console.WriteLine($"{utocnik.Jmeno} rozbíjí bednu hodnotou {utok}. Bedna má {bedna.Zdravi} životů.");
+
+                                if (bedna.NeniRozbita() == false)
+                                {
+                                    utocnik.Zdravi += 0.3 * utocnik.ZdraviMax;
+                                }
+                            }
+
+                            utok = utocnik.Utok(oponent);
                             Console.WriteLine($"{utocnik.Jmeno} zaútočil hodnotou {utok}. {oponent.Jmeno} má {oponent.Zdravi} životů.");
 
                             if (oponent.MuzeBojovat())

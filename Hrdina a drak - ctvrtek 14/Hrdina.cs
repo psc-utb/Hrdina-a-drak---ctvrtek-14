@@ -15,7 +15,7 @@ namespace Hrdina_a_drak___ctvrtek_14
             Mec = mec;
         }
 
-        public override double Utok(Postava oponent)
+        public override double Utok(IZasazitelny oponent)
         {
             if (Mec != null)
             {
