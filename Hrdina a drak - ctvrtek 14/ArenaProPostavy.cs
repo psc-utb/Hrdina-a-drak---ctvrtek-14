@@ -8,9 +8,13 @@ namespace Hrdina_a_drak___ctvrtek_14
 {
     public class ArenaProPostavy
     {
-        public Postava[] Postavy { get; set; }
+        public List<Postava> Postavy { get; set; }
 
         public ArenaProPostavy(Postava[] postavy)
+        {
+            Postavy = postavy.ToList();
+        }
+        public ArenaProPostavy(List<Postava> postavy)
         {
             Postavy = postavy;
         }
@@ -20,7 +24,7 @@ namespace Hrdina_a_drak___ctvrtek_14
             Bedna bedna = new Bedna(50, 2);
             while (MuzeSeBojovat())
             {
-                for (int i = 0; i < Postavy.Length; ++i)
+                for (int i = 0; i < Postavy.Count; ++i)
                 {
                     Postava utocnik = Postavy[i];
                     if (utocnik.MuzeBojovat())

@@ -64,7 +64,7 @@ namespace Hrdina_a_drak___ctvrtek_14
             return hodnotaObrany;
         }
 
-        public Postava VyberOponenta(Postava[] postavy)
+        public Postava VyberOponenta(List<Postava> postavy)
         {
             foreach (var postava in postavy)
             {
@@ -78,7 +78,7 @@ namespace Hrdina_a_drak___ctvrtek_14
 
         protected abstract bool KontrolaOponenta(Postava oponent);
 
-        public bool MuzeVybratOponenta(Postava[] postavy)
+        public bool MuzeVybratOponenta(List<Postava> postavy)
         {
             Postava oponent = VyberOponenta(postavy);
             if (oponent != null)
