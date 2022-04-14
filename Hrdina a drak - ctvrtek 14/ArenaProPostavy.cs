@@ -13,10 +13,20 @@ namespace Hrdina_a_drak___ctvrtek_14
         public ArenaProPostavy(Postava[] postavy)
         {
             Postavy = postavy.ToList();
+            PropojeniEventuAMetody();
         }
         public ArenaProPostavy(List<Postava> postavy)
         {
             Postavy = postavy;
+            PropojeniEventuAMetody();
+        }
+
+        void PropojeniEventuAMetody()
+        {
+            foreach(var postava in Postavy)
+            {
+                postava.VybranNovyOponent += VypisInfoPoVyberuNovehoOponenta;
+            }
         }
 
         public void Boj()
@@ -87,6 +97,11 @@ namespace Hrdina_a_drak___ctvrtek_14
             {
                 return false;
             }
+        }
+
+        void VypisInfoPoVyberuNovehoOponenta(Postava utocnik, Postava oponent)
+        {
+            Console.WriteLine($"Postava: {utocnik.Jmeno} si vybrala nového oponenta: {oponent.Jmeno}");
         }
     }
 }

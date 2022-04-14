@@ -32,8 +32,8 @@ namespace Hrdina_a_drak___ctvrtek_14
             postavy.Sort();
             postavy.Reverse();
             postavy.Add(new Hrdina("hrdina 1", 50, 50, 5, 5, new Mec(8)));
-            postavy.Remove(drak2);
-            postavy.RemoveAt(1);
+            //postavy.Remove(drak2);
+            //postavy.RemoveAt(1);
             foreach(var postava in postavy)
             {
                 Console.WriteLine(postava.ToString());
