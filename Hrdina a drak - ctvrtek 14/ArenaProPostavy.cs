@@ -71,6 +71,11 @@ namespace Hrdina_a_drak___ctvrtek_14
             }
         }
 
+        public async Task BojAsync()
+        {
+            await Task.Run(Boj);
+        }
+
         public int PocetBojujicichPostav()
         {
             int pocet = 0;
